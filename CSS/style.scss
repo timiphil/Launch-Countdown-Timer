@@ -1,0 +1,296 @@
+ *, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0; 
+ }
+ :root {
+     --white: hsl(0, 0%, 100%);
+     --grayish-blue: hsl(237, 18%, 59%);
+     --soft-red: hsl(345, 95%, 68%);
+     --dark-desaturated-blue: hsl(236, 21%, 26%);
+     --deep-dark-blue: hsl(235, 16%, 14%);
+     --mostly-black-blue: hsl(234, 17%, 12%);
+    /* font family */
+     --fonts-main: "Red Hat Text", sans-serif;
+ }
+ // Pseudo Mixin
+ @mixin pseudo($top, $width, $height, $color, $br) {
+     content: '';
+     position: absolute;
+     top: $top;
+     width: $width;
+     height: $height;
+     background-color: $color;
+     border-radius: $br;
+ }
+html {
+    font-size: 100%;
+}
+ body {
+  font-family: var(--fonts-main);
+  background-color: #231d2b;
+  background-image: url(../images/bg-stars.svg) , url(../images/pattern-hills.svg); 
+  background-repeat: no-repeat;
+  background-position: top center, bottom left;
+  background-size: 100% 75%, 190% 25%; 
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+ }
+
+ .title {
+    max-width: 16.25rem;
+    margin: 0 auto 3.75rem;
+    line-height: 1.4;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.15rem;
+    color: var(--white);
+    text-align: center;
+    text-transform: uppercase;
+ }
+
+ .component {
+     max-width: 23.75rem;
+     margin-inline: auto;
+     padding: 8.75rem 1rem 1.5rem;
+ }
+
+ .counter {
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     width: 100%;
+     gap: 1rem;
+ }
+ .counter-item {
+    min-width: 4rem;
+    width: 21%;
+        .flip-card {
+            background-color: hsl(236 21% 26%);
+            line-height: 1;
+            font-size: 35px;
+            font-weight: 700;
+            letter-spacing: normal;
+            color: var(--soft-red);
+            text-align: center;
+            height: 70px;
+            border-radius: .1em;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 7px 0px 0 var(--mostly-black-blue);
+            position: relative;
+                .top-number, 
+                .bottom-number {
+                    // overflow: hidden;
+                    background-color: var(--dark-desaturated-blue);
+                    height: .75em;
+                    line-height: 1;
+                    padding: .5em;
+                }
+                .top-number {
+                    overflow: hidden;
+                    position: absolute;
+                    padding-top: 15px;
+                    width: 100%;
+                    bottom: 0;
+                    filter: brightness(80%);
+                    // border-top-right-radius: .1rem;
+                    // border-top-left-radius: .1rem;
+                    background-color: hsl(236 21% 26%); 
+                    border-bottom: 1px solid rgba(255, 255, 255, .1);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                }
+                 .bottom-number {
+                     position: absolute;
+                     padding-bottom: 1rem;
+                     left: 0;
+                     bottom: 0;
+                     width: 100%;
+                     display: flex;
+                     flex-direction: column;
+                     justify-content: flex-end;
+                    //  align-items: flex-end;
+                     border-top-right-radius: .1rem;
+                     border-top-left-radius: .1rem;
+                 }   
+                 
+        // Rounded in the middle of counter
+                    &::before {
+                        @include pseudo(50%, 10px, 10px, var(--mostly-black-blue), 50%);
+                        left: 0;
+                        z-index: 4;
+                        transform: translate(-50%, -50%);
+                    }
+                    &::after {
+                        right: 0;
+                        transform: translate(50%, -50%);
+                        z-index: 4;
+                        @include pseudo(50%, 10px, 10px, var(--mostly-black-blue), 50%);
+                    }
+    }
+        .flip-card .top-flip,
+        .flip-card .bottom-flip  {
+                overflow: hidden;
+                height: .75em;
+                line-height: 1;
+                padding: .5em;
+                width: 100%;
+                border-top-right-radius: .1rem;
+                border-top-left-radius: .1rem;
+        }    
+        .flip-card .top-flip {
+                // position: absolute;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 15px;
+                bottom: 0;
+                filter: brightness(80%);
+                border-radius: 5px;
+                background-color: var(--dark-desaturated-blue);
+                border-bottom: 1px solid rgba(255, 255, 255, .1);
+                transform-origin: bottom;
+                animation: flip-top .25s ease-in;
+        }
+        @keyframes flip-top {
+            100% { 
+                transform: rotateX(90deg);
+            }
+        }
+        .flip-card .bottom-flip {
+                position: absolute;
+                padding-bottom: 1rem;
+                bottom: 0;
+                display: flex; 
+                align-items: flex-end;
+                transform-origin: top;
+                transform: rotateX(90deg);
+                animation: flip-bottom .25s ease-out .25s;
+        }
+        @keyframes flip-bottom {
+                     100% {
+                         transform: rotateX(0deg);
+                     }
+        }  
+               
+        // Words of each counter item  
+        .words {
+            display: block;
+            line-height: 1;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--grayish-blue);
+            text-align: center;
+            text-transform: uppercase;
+        } 
+}
+
+// footer 
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    line-height: 1.5;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: normal;
+    color: var(--white);
+    text-align: center;
+    text-transform: normal;
+
+    // social links
+    .social-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+        list-style: none;
+        margin-bottom: 1rem;
+        li a {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--grayish-blue);
+        }
+        li a:focus {
+            outline: 0.3em dashed var(--dark-desaturated-blue);
+            outline-offset: 0.5em;
+        }
+        a path {
+            transition: 0.25s ease-in-out;
+        }
+        a:hover path {
+            fill: var(--soft-red);
+        }
+        a:hover {
+            color: var(--soft-red);
+        }
+    }
+    a {
+        display: inline;
+        color: var(--soft-red);
+        transition: .25s ease-in-out;
+        text-decoration: none;
+        &:focus {
+            outline: .3s dashed var(--soft-red);
+            outline-offset: .5em;
+        }
+    }
+    a:hover {
+        color: rgb(230, 171, 253)
+    }
+}
+
+// Media query for screens larger than 769px
+@media screen  and (min-width: 48.063em) {
+    body {
+        background-size: 100% 75%, 100% 25%;
+    }
+    .component {
+        // max-width: unset;
+        min-width: 42.8rem;
+    }
+    .title {
+        font-size: 1.30rem;
+        letter-spacing: 0.35em;
+        margin-bottom: 6.7rem;
+        max-width: unset;
+    }
+    .counter-item {
+        width: 9rem;
+        .flip-card {
+            height: 105px;
+            font-size: 4.68rem;
+            .top-number .top-flip {
+                padding-top: 32px;
+                height: 75px;
+            }
+            .bottom-number .bottom-flip {
+                padding-top: 32px;
+                height: 75px;
+            }
+        }
+        .words {
+            font-size: 1rem;
+        }
+    }
+    .social-links {
+        gap: 1.5rem;
+    }
+}
+
+          
+
+
+
+
