@@ -19,14 +19,14 @@ The users should be able to:
 - **Bonus**: When a number changes, make the card flip from the middle
 
 ## My Solution
-[Desktop screenshot Launch countdown timer](./images/Desktop-version.png)
-[Mobile screenshot Launch countdown timer](./images/mobile-version.png)
+![Desktop screenshot Launch countdown timer](./images/Desktop-version.png)
+![Mobile screenshot Launch countdown timer](./images/mobile-version.png)
 
 
 ## Link
 
 - [GitHub](https://github.com/Timiphil/Launch-Countdown-Timer)
-- [Live solution view:] (https://timiphil.github.io/Launch-Countdown-Timer/)
+- Live solution view: (https://timiphil.github.io/Launch-Countdown-Timer/)
 
 - [Netlify](https://launch-countdown-timer1.netlify.app/)
 
