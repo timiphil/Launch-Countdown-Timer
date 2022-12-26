@@ -278,6 +278,7 @@ footer {
   color: var(--white);
   text-align: center;
   text-transform: normal;
+  margin-bottom: 30px;
 }
 footer .social-links {
   display: -webkit-box;
