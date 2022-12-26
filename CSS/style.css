@@ -114,6 +114,7 @@ body {
   padding-top: 15px;
   width: 100%;
   bottom: 0;
+  left: 0;
   -webkit-filter: brightness(80%);
           filter: brightness(80%);
   background-color: hsl(236deg, 21%, 26%);
